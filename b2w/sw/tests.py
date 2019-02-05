@@ -142,6 +142,11 @@ class PlanetAPITestCase(TestCase):
         # after Total 4 planets
         self.assertEqual(Planet.objects.count(), 4)
 
+        planet = Planet.objects.get(id=planet_created['id'])
+        self.assertEqual(planet.name, 'Dagobah')
+        self.assertEqual(planet.climate, 'murky')
+        self.assertEqual(planet.terrain, 'swamp, jungles')
+
     def test_list_planets(self):
         """
             Test list of planets :
@@ -153,8 +158,9 @@ class PlanetAPITestCase(TestCase):
         result = c.get(url)
         planet_list = json.loads(result.content)['planets']
         # Total 3 planets
-        self.assertTrue(isinstance(planet_list, list))
+        self.assertEqual(len(planet_list), Planet.objects.count())
         self.assertEqual(len(planet_list), 3)
+        self.assertTrue(isinstance(planet_list, list))
         self.assertTrue(isinstance(planet_list[0], dict))
 
         atributes = ['id', 'name', 'climate', 'terrain', 'screenings']
@@ -210,8 +216,16 @@ class PlanetAPITestCase(TestCase):
         """
             Test get planet by id.
         """
+        # Delete Yavin IV
         # before delete Total 3 planets
         self.assertEqual(Planet.objects.count(), 3)
+        # find 1
+        self.assertEqual(Planet.objects.filter(id=self.planet2.id).count(), 1)
+        planet = Planet.objects.get(id=self.planet2.id)
+        self.assertEqual('Yavin IV', self.planet2.name)
+        self.assertEqual(planet.name, self.planet2.name)
+        self.assertEqual(planet.climate, self.planet2.climate)
+        self.assertEqual(planet.terrain, self.planet2.terrain)
 
         c = Client()
         # Delete
@@ -221,6 +235,8 @@ class PlanetAPITestCase(TestCase):
         result = c.delete(url)
         # after delete Total 2 planets
         self.assertEqual(Planet.objects.count(), 2)
+        # find 0 so self.planet2 deleted
+        self.assertEqual(Planet.objects.filter(id=self.planet2.id).count(), 0)
         
 
         
