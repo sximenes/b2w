@@ -1,7 +1,9 @@
 # b2w
 
 Usado Python e MongoDB.
-API Rest aceitando get, post, put, delete
+
+API Rest aceitando get, post, put, delete.
+
 Planet attributes:
     {
         "id": 1,
@@ -10,8 +12,20 @@ Planet attributes:
         "terrain": "arenoso",
         "screenings": 0
     }
+    
     screenings -> quantidade de aparições em filmes busca na api https://swapi.co/.
+  
+  
+Para inserir planeta basta fazer um post com params = planet_data = {
+            'name': 'Dagobah',
+            'climate': 'murky',
+            'terrain': 'swamp, jungles'
+            }
+ 
+    para url '/sw/planet' 
+    client.post(url, data=planet_data)
 
+ 
 Busca por atributo(id, name, climate, terrain):
 http://localhost:8887/sw/planet/?filter{nome_atributo}=valor_atributo
 
