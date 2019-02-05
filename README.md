@@ -34,6 +34,3 @@ sudo docker-compose run --rm api python3 manage.py test
 
 
 #https://code.djangoproject.com/wiki/NoSqlSupport
-
-#https://pythonhosted.org/django-rest-framework-mongoengine/serializers/
-#https://mongoengine-odm.readthedocs.io/tutorial.html
