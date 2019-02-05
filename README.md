@@ -14,7 +14,18 @@ Planet attributes:
     }
     
     screenings -> quantidade de aparições em filmes busca na api https://swapi.co/.
+  
+  
+Para inserir planeta basta fazer um post com params = planet_data = {
+            'name': 'Dagobah',
+            'climate': 'murky',
+            'terrain': 'swamp, jungles'
+            }
+ 
+    para url '/sw/planet' 
+    client.post(url, data=planet_data)
 
+ 
 Busca por atributo(id, name, climate, terrain):
 http://localhost:8887/sw/planet/?filter{nome_atributo}=valor_atributo
 
