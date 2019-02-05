@@ -2,7 +2,8 @@
 
 Usado Python e MongoDB.
 
-API Rest aceitando get, post, put, delete
+API Rest aceitando get, post, put, delete.
+
 Planet attributes:
     {
         "id": 1,
@@ -11,6 +12,7 @@ Planet attributes:
         "terrain": "arenoso",
         "screenings": 0
     }
+    
     screenings -> quantidade de aparições em filmes busca na api https://swapi.co/.
 
 Busca por atributo(id, name, climate, terrain):
