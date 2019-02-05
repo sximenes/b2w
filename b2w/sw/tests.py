@@ -219,8 +219,8 @@ class PlanetAPITestCase(TestCase):
         # Delete Yavin IV
         # before delete Total 3 planets
         self.assertEqual(Planet.objects.count(), 3)
-        # find 1
-        self.assertEqual(Planet.objects.filter(id=self.planet2.id).count(), 1)
+        # exists True
+        self.assertTrue(Planet.objects.filter(id=self.planet2.id).exists())
         planet = Planet.objects.get(id=self.planet2.id)
         self.assertEqual('Yavin IV', self.planet2.name)
         self.assertEqual(planet.name, self.planet2.name)
@@ -235,8 +235,8 @@ class PlanetAPITestCase(TestCase):
         result = c.delete(url)
         # after delete Total 2 planets
         self.assertEqual(Planet.objects.count(), 2)
-        # find 0 so self.planet2 deleted
-        self.assertEqual(Planet.objects.filter(id=self.planet2.id).count(), 0)
+        # exists False so self.planet2 deleted
+        self.assertFalse(Planet.objects.filter(id=self.planet2.id).exists())
         
 
         
