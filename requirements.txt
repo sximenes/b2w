@@ -1,0 +1,17 @@
+#django==1.11.18
+django==2.0
+#psycopg2
+dynamic_rest
+djangorestframework<3.8
+factory_boy
+#freezegun
+#mock
+#pandas
+#wdb
+#git+https://github.com/django-nonrel/django@nonrel-1.5
+#git+https://github.com/django-nonrel/djangotoolbox
+#git+https://github.com/django-nonrel/mongodb-engine
+#mongoengine
+djongo
+#django-rest-framework-mongoengine
+#django-mongo-connection
